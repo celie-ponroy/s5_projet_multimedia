@@ -61,3 +61,10 @@ select-selected:after {
   border: 6px solid transparent;
   border-color: #fff transparent transparent transparent;
 }
+
+
+
+img {
+  width: 200px;
+  height: auto;
+}
