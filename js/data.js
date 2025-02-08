@@ -168,12 +168,85 @@ export const data = {
             { "nom": "Norvège", "image": "drapeaux/Norway.svg" },
             { "nom": "Nouvelle-Zélande", "image": "drapeaux/Flag_of_New_Zealand.svg" },
 
+            { "nom": "Oman", "image": "drapeaux/Flag_of_Oman.svg" },
+            { "nom": "Ouganda", "image": "drapeaux/Flag_of_Uganda.svg" },
+            { "nom": "Ouzbékistan", "image": "drapeaux/Flag_of_Uzbekistan.svg" },	  
+
+            { "nom": "Pakistan", "image": "drapeaux/Pakistan.svg" },
+            { "nom": "Palaos", "image": "drapeaux/Flag_of_Palau.svg" },
+            { "nom": "Palestine", "image": "drapeaux/Flag_of_Palestine.svg" },
+            { "nom": "Panama", "image": "drapeaux/Panama.svg" },
+            { "nom": "Papouasie-Nouvelle-Guinée", "image": "drapeaux/Papua_New_Guinea.svg" },
+            { "nom": "Paraguay", "image": "drapeaux/Flag_of_Paraguay.svg" },
+            { "nom": "Pays-Bas", "image": "drapeaux/Flag_of_the_Netherlands.svg" },
+            { "nom": "Pérou", "image": "drapeaux/Flag_of_Peru.svg" },
+            { "nom": "Philippines", "image": "drapeaux/Philippines.svg" },
+            { "nom": "Pologne", "image": "drapeaux/Flag_of_Poland.svg" },
+            { "nom": "Portugal", "image": "drapeaux/Flag_of_Portugal.svg" },
+            
+            { "nom": "Qatar", "image": "drapeaux/Flag_of_Qatar.svg" },
+            
+            { "nom": "Roumanie", "image": "drapeaux/Flag_of_Romania.svg" },
+            { "nom": "Royaume-Uni", "image": "drapeaux/Flag_of_the_United_Kingdom.svg" },
+            { "nom": "Russie", "image": "drapeaux/Flag_of_Russia.svg" },
+            { "nom": "Rwanda", "image": "drapeaux/Rwanda.svg" },
+
+            { "nom": "Saint-Christophe-et-Niévès", "image": "drapeaux/Saint_Kitts_and_Nevis.svg" },
+            { "nom": "Sainte-Lucie", "image": "drapeaux/Saint_Lucia.svg" },
+            { "nom": "Saint-Marin", "image": "drapeaux/Flag_of_San_Marino.svg" },
+            { "nom": "Saint-Vincent-et-les-Grenadines", "image": "drapeaux/Saint_Vincent_and_the_Grenadines.svg" },
+            { "nom": "Salomon", "image": "drapeaux/Flag_of_the_Solomon_Islands.svg" },
+            { "nom": "Salvador", "image": "drapeaux/Flag_of_El_Salvador.svg" },
+            { "nom": "Samoa", "image": "drapeaux/Flag_of_Samoa.svg" },
+            { "nom": "Sao Tomé-et-Principe", "image": "drapeaux/São_Tomé_and_Príncipe.svg" },
+            { "nom": "Sénégal", "image": "drapeaux/Flag_of_Senegal.svg" },
+            { "nom": "Serbie", "image": "drapeaux/Flag_of_Serbia.svg" },
+            { "nom": "Seychelles", "image": "drapeaux/Seychelles.svg" },
+            { "nom": "Sierra Leone", "image": "drapeaux/Flag_of_Sierra_Leone.svg" },
+            { "nom": "Singapour", "image": "drapeaux/Flag_of_Singapore.svg" },
+            { "nom": "Slovaquie", "image": "drapeaux/Slovakia.svg" },
+            { "nom": "Slovénie", "image": "drapeaux/Flag_of_Slovenia.svg" },
+            { "nom": "Somalie", "image": "drapeaux/Flag_of_Somalia.svg" },
+            { "nom": "Soudan", "image": "drapeaux/Flag_of_Sudan.svg" },
+            { "nom": "Soudan du Sud", "image": "drapeaux/Flag_of_South_Sudan.svg" },
+            { "nom": "Sri Lanka", "image": "drapeaux/Flag_of_Sri_Lanka.svg" },
+            { "nom": "Suède", "image": "drapeaux/Flag_of_Sweden.svg" },
+            { "nom": "Suisse", "image": "drapeaux/Flag_of_Switzerland.svg" },
+            { "nom": "Suriname", "image": "drapeaux/Flag_of_Suriname.svg" },
+            { "nom": "Syrie", "image": "drapeaux/Flag_of_Syria.svg" },
+
+            { "nom": "Tadjikistan", "image": "drapeaux/Flag_of_Tajikistan.svg" },
+            { "nom": "Tanzanie", "image": "drapeaux/Tanzania.svg" },
+            { "nom": "Tchad", "image": "drapeaux/Flag_of_Chad.svg" },
+            { "nom": "Tchéquie", "image": "drapeaux/Flag_of_the_Czech_Republic.svg" },
+            { "nom": "Thaïlande", "image": "drapeaux/Flag_of_Thailand.svg" },
+            { "nom": "Timor oriental", "image": "drapeaux/Flag_of_Timor-Leste.svg" },
+            { "nom": "Togo", "image": "drapeaux/Flag_of_Togo.svg" },
+            { "nom": "Tonga", "image": "drapeaux/Flag_of_Tonga.svg" },
+            { "nom": "Trinité-et-Tobago", "image": "drapeaux/Flag_of_Trinidad_and_Tobago.svg" },
+            { "nom": "Tunisie", "image": "drapeaux/Flag_of_Tunisia.svg" },
+            { "nom": "Turkménistan", "image": "drapeaux/Flag_of_Turkmenistan.svg" },
+            { "nom": "Turquie", "image": "drapeaux/Turkey.svg" },
+            { "nom": "Tuvalu", "image": "drapeaux/Tuvalu.svg" },
+
+            { "nom": "Ukraine", "image": "drapeaux/Flag_of_Ukraine.svg" },
+            { "nom": "Uruguay", "image": "drapeaux/Flag_of_Uruguay.svg" },
+
+            { "nom": "Vanuatu", "image": "drapeaux/Flag_of_Vanuatu.svg" },
+            { "nom": "Vatican", "image": "drapeaux/Vatican.svg" },
+            { "nom": "Venezuela", "image": "drapeaux/Flag_of_Venezuela.svg" },
+            { "nom": "Viêt Nam", "image": "drapeaux/Flag_of_Vietnam.svg" },
+
+            { "nom": "Yémen", "image": "drapeaux/Flag_of_Yemen.svg" },
+
+            { "nom": "Zambie", "image": "drapeaux/Zambia.svg" },
+            { "nom": "Zimbabwe", "image": "drapeaux/Zimbabwe.svg" },
+           
 
 
-            { "nom": "", "image": "drapeaux/" },
-            { "nom": "", "image": "drapeaux/" },
-            { "nom": "", "image": "drapeaux/" },
 
+
+            
 
 
 
