@@ -1,3 +1,31 @@
+
+#images_jeu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  gap: 5px; 
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  max-width: 800px;
+  margin: 20px auto; 
+}
+
+#images_jeu img {
+  width: 100%; 
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+#images_jeu img:hover {
+  transform: scale(1.05); 
+}
+
+
+
+
+
 input {
     font-family: "SF Pro";
     max-width: 190px;
@@ -62,9 +90,3 @@ select-selected:after {
   border-color: #fff transparent transparent transparent;
 }
 
-
-
-img {
-  width: 200px;
-  height: auto;
-}
