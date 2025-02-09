@@ -1,0 +1,9 @@
+{
+    "name": "learnary",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module",
+    "scripts": {
+      "start": "live-server"
+    }
+  }

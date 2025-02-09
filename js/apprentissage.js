@@ -3,14 +3,17 @@ import { data } from "./data.js";
 
 let langue = "fr"; 
 let theme = "pays"; 
+  
 
-export function initiliser_page(){
-    //boutton en haut qui permets de choisir sa langue et son thème
-    ajouterImages();
-    //boutton en bas pour quitter
-}
-export function ajouterImages(){
-    let div = document.getElementById("images_jeu");
+export function ajouterImages(container){
+    // Vérifier si le conteneur est bien fourni
+    if (!container) {
+        console.error("Erreur : Le conteneur est introuvable !");
+        return;
+    }
+
+    container.innerHTML = ''; // Vide le conteneur 
+
     let elements = data[theme][langue]; 
 
     elements.forEach((element) => {
@@ -18,7 +21,7 @@ export function ajouterImages(){
         image.src = "images/" + element.image;
         image.alt = element.nom;
         image.addEventListener("click", () => speak(element.nom));
-        div.appendChild(image);
+        container.appendChild(image);
         
     });  
 }
