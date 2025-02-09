@@ -1,5 +1,4 @@
 'use strict'
-
 var supportMsg = document.getElementById('msg');
 var voiceSelect = document.getElementById('voice');
 var button = document.getElementById('speak');

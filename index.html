@@ -5,34 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boite à bruits</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-
+    <link rel="icon" href="logo.png" type="image/png" />
 </head>
+
 <body>
+    <!-- Page d'accueil -->
+    <div id="welcome-screen">
+        <h1>Bienvenue sur Learnary</h1>
+        <p>Découvrez notre application !</p>
+        <!-- Boutons pour accéder aux différents modes-->
+        <div class="button-container">
+            <button id="apprentissage-btn" class="main-button">Mode apprentissage</button>
+            <button id="jeu-btn" class="main-button">Mode jeu</button>
+        </div>
+    </div>
 
-    <h1>Bienvenu à la boite à bruit</h1>
-    <p id="msg"></p>
-<!-- 
-    <input type="text" name="speech-msg" id="speech-msg" >
-    <div class="option">
-    <label for="voice">Voice</label>
-    <select name="voice" id="voice"></select>
+    <!-- Application principale (initialement cachée) -->
+    <div id="app-screen" style="display: none;">
+        <header>
+            <button id="back-btn" class="nav-button">Retour à l'accueil</button>
+            <h1 id="app-title">Boite à bruits</h1>
+        </header>
+
+        <!-- Section pour l’apprentissage -->
+        <div id="apprentissage-section" style="display: none;">
+            <div id="images_apprentissage"></div>
+        </div>
+
+        <!-- Section pour le jeu -->
+        <div id="jeu-section" style="display: none;">
+            <p id="timer">Temps restant : 30s</p>
+            <button id="start-game-btn" class="main-button">Commencer la partie</button>
+            <div id="images_jeu"></div>
+        </div>
     </div>
-    <div class="option">
-    <label for="volume">Volume</label>
-    <input type="range" min="0" max="1" step="0.1" name="volume" id="volume" value="1">
-    </div>
-    <div class="option">
-    <label for="rate">Rate</label>
-    <input type="range" min="0.1" max="10" step="0.1" name="rate" id="rate" value="1">
-    </div>
-    <div class="option">
-    <label for="pitch">Pitch</label>
-    <input type="range" min="0" max="2" step="0.1" name="pitch" id="pitch" value="1">
-    </div>
-    <button id="speak">Speak</button> -->
-    
-    <div id="images_jeu" ></div>
+
     <script defer type="module" src="js/main.js"></script>
-
 </body>
 </html>
