@@ -56,15 +56,27 @@ body {
   background-color: #45a049;
 }
 
+/* Grille responsive pour les images du jeu */
 #images_jeu {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
-  gap: 5px; 
+  gap: 5px;
   justify-content: center;
   align-items: center;
-  width: 90vw;
+  width: 90vw; 
   max-width: 800px;
   margin: 20px auto; 
+}
+
+.jeu-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.jeu-image:hover {
+  transform: scale(1.1);
 }
 
 #images_jeu img {

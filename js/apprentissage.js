@@ -1,11 +1,8 @@
 import { speak } from "./text_speech.js";
 import { data } from "./data.js";
-
-let langue = "fr"; 
-let theme = "pays"; 
   
 
-export function ajouterImages(container){
+export function ajouterImages(container, theme, lang) {
     // Vérifier si le conteneur est bien fourni
     if (!container) {
         console.error("Erreur : Le conteneur est introuvable !");
@@ -14,11 +11,13 @@ export function ajouterImages(container){
 
     container.innerHTML = ''; // Vide le conteneur 
 
-    let elements = data[theme][langue]; 
+    let elements = data[theme][lang]; 
+    console.log(lang);
 
     elements.forEach((element) => {
         let image = document.createElement("img");
-        image.src = "images/" + element.image;
+        console.log(element.image);
+        image.src = "images/" + theme + "/" + element.image;
         image.alt = element.nom;
         image.addEventListener("click", () => speak(element.nom));
         container.appendChild(image);

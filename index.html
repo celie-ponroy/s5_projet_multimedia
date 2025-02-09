@@ -32,8 +32,16 @@
             <label for="theme-select">Choisissez un thème :</label>
             <select id="theme-select">
                 <option value="animaux">Animaux</option>
-                <option value="instruments">Instruments</option>
-                <option value="vehicules">Véhicules</option>
+                <option value="drapeaux">Drapeaux</option>
+            </select>
+        </div>
+
+        <!-- Sélecteur de la langue -->
+        <div id="lang-selector">
+            <label for="lang-select">Choisissez une langue :</label>
+            <select id="lang-select">
+                <option value="fr">Français</option>
+                <option value="en">Anglais</option>
             </select>
         </div>
 
@@ -44,7 +52,9 @@
 
         <!-- Section pour le jeu -->
         <div id="jeu-section" style="display: none;">
-            <p id="timer">Temps restant : 30s</p>
+            <p id="timer">Temps restant : <span id="timer-value">30s</span></p>
+            <div id="score-display">Score : 0</div>
+            <div id="high-score-display">High Score : 0</div>
             <button id="start-game-btn" class="main-button">Commencer la partie</button>
             <div id="images_jeu"></div>
         </div>

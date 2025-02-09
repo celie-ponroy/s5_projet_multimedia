@@ -1,5 +1,5 @@
 import { ajouterImages } from "./apprentissage.js";
-import { ajouterImageJeu, startGame } from "./jeu.js";
+import { afficherImagesJeu, startTimer } from "./jeu.js";
 
 // Sélection des éléments DOM
 const welcomeScreen = document.getElementById('welcome-screen');
@@ -15,12 +15,17 @@ const apprentissageSection = document.getElementById("apprentissage-section");
 const jeuSection = document.getElementById("jeu-section");
 const imagesContainerApprentissage = document.getElementById("images_apprentissage");
 const imagesContainerJeu = document.getElementById("images_jeu");
+const themeSelect = document.getElementById("theme-select"); // Sélecteur de thème
+const langSelect = document.getElementById("lang-select");//Sélecteur de langue
 
-// Sélecteur de thème
-const themeSelect = document.getElementById("theme-select");
+let currentTheme = themeSelect.value; // Valeur du thème sélectionné (par défaut = premier choix)
+let currentLang = langSelect.value; //Valeur de la langue sélectionnée (par défaut = premier choix)
 
-// Valeur du thème sélectionné (par défaut = premier choix)
-let currentTheme = themeSelect.value;
+// Fonction pour charger les images par défaut
+function loadDefaultImages() {
+    ajouterImages(imagesContainerApprentissage, currentTheme, currentLang);
+    afficherImagesJeu(imagesContainerJeu, currentTheme);
+}
 
 // Met à jour le thème en fonction de la sélection
 themeSelect.addEventListener("change", () => {
@@ -30,14 +35,26 @@ themeSelect.addEventListener("change", () => {
     // Recharge les images si l'utilisateur change de thème sans quitter la section
     if (apprentissageSection.style.display === "block") {
         imagesContainerApprentissage.innerHTML = '';
-        ajouterImages(imagesContainerApprentissage, currentTheme);
+        ajouterImages(imagesContainerApprentissage, currentTheme, currentLang);
     } else if (jeuSection.style.display === "block") {
         imagesContainerJeu.innerHTML = '';
-        ajouterImageJeu(imagesContainerJeu, currentTheme);
+        afficherImagesJeu(imagesContainerJeu, currentTheme);
     }
 });
 
-// Montre la bonne section en fonction du mode 
+// Met à jour la langue en fonction de la sélection
+langSelect.addEventListener("change", () => {
+    currentLang = langSelect.value;
+    console.log(`Langue sélectionnée : ${currentLang}`);
+    
+    // Recharge les images avec la nouvelle langue
+    imagesContainerApprentissage.innerHTML = '';
+    ajouterImages(imagesContainerApprentissage, currentTheme, currentLang);
+    imagesContainerJeu.innerHTML = '';
+    afficherImagesJeu(imagesContainerJeu, currentTheme);
+});
+
+// Montre la bonne section en fonction du mode
 function showApp(mode) {
     console.log(`Mode sélectionné : ${mode}`);
 
@@ -53,14 +70,14 @@ function showApp(mode) {
         jeuSection.style.display = "none";
         
         console.log("Ajout des images d'apprentissage...");
-        ajouterImages(imagesContainerApprentissage, currentTheme);
+        ajouterImages(imagesContainerApprentissage, currentTheme, currentLang);
     } else if (mode === "jeu") {
         appTitle.textContent = "Boite à bruits - Jeu";
         jeuSection.style.display = "block";
         apprentissageSection.style.display = "none";
         
         console.log("Ajout des images pour le jeu...");
-        ajouterImageJeu(imagesContainerJeu, currentTheme);
+        afficherImagesJeu(imagesContainerJeu, currentTheme);
     }
 }
 
@@ -77,4 +94,7 @@ function showWelcome() {
 apprentissageBtn.addEventListener('click', () => showApp("apprentissage"));
 jeuBtn.addEventListener('click', () => showApp("jeu"));
 backBtn.addEventListener('click', showWelcome);
-startGameBtn.addEventListener('click', startGame);
+startGameBtn.addEventListener('click', startTimer);
+
+// Charger les images par défaut lors du démarrage de l'application
+loadDefaultImages();

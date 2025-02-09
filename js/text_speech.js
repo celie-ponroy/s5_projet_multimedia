@@ -52,9 +52,9 @@ export function speak(texte){
     var msg = new SpeechSynthesisUtterance();
         msg.text = texte;
         // Set les attributs
-        msg.volume = parseFloat(1);
-        msg.rate = parseFloat(0.1);
-        msg.pitch = parseFloat(0.5);
+        msg.volume = parseFloat(1); //volume
+        msg.rate = parseFloat(0.6); //vitesse
+        msg.pitch = parseFloat(0.5); //hauteur
         // Si une voix a été sélectionnée, faire les modifications nécessaires.
         msg.voice = speechSynthesis.getVoices()[0];
         
