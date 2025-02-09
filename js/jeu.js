@@ -1,54 +1,34 @@
-import { speak } from "./text_speech.js";
+// Importer les données
 import { data } from "./data.js";
 
-let taille_images = 9; // (3x3)
-let timerDuration = 30; // Durée du jeu en secondes
-let timer; // Variable pour stocker l'intervalle
-let timeLeft; // Temps restant
-let tableau = [
-    ["tortue.jpg", "tortue"], ["chien.jpg", "chien"], ["coq.jpg", "coq"],
-    ["pingouin.jpg", "pingouin"], ["chevre.jpg", "chevre"], ["chat.jpg", "chat"],
-    ["cheval.jpg", "cheval"], ["grenouille.jpg", "grenouille"], ["lion.jpg", "lion"]
-];
+// Sélection des éléments du DOM
+const themeSelect = document.getElementById("theme-select");
+const imagesJeuContainer = document.getElementById("images_jeu");
+const startGameBtn = document.getElementById("start-game-btn");
 
-// Fonction pour ajouter les images du jeu
-// Fonction pour ajouter les images du jeu avec un paramètre pour le conteneur
-export function ajouterImages(container) {
-    // Vérifier si le conteneur est bien fourni
-    if (!container) {
-        console.error("Erreur : Le conteneur est introuvable !");
-        return;
-    }
-
-    container.innerHTML = ''; // Vider le conteneur avant d'ajouter les images
-
-    for (let i = 0; i < taille_images; i++) {
-        let image = document.createElement("img");
-        image.src = "/images/animaux/" + tableau[i][0];
-        image.addEventListener("click", function () { speak(tableau[i][1]); });
-        container.appendChild(image);
+// Fonction pour afficher les images du thème sélectionné
+export function afficherImagesJeu(theme) {
+    imagesJeuContainer.innerHTML = "";
+    if (data[theme]) {
+        data[theme].forEach(image => {
+            const imgElement = document.createElement("img");
+            imgElement.src = image.url;
+            imgElement.alt = image.nom;
+            imgElement.classList.add("jeu-image");
+            imagesJeuContainer.appendChild(imgElement);
+        });
+    } else {
+        imagesJeuContainer.innerHTML = "<p>Aucune image disponible pour ce thème.</p>";
     }
 }
 
-// Fonction pour démarrer le jeu
-export function startGame() {
-    ajouterImages(); // Charger les images
-    timeLeft = timerDuration;
-    document.getElementById("timer").textContent = `Temps restant : ${timeLeft}s`;
+// Détecter le changement de thème
+themeSelect.addEventListener("change", (event) => {
+    afficherImagesJeu(event.target.value);
+});
 
-    // Démarrer le compte à rebours
-    timer = setInterval(() => {
-        timeLeft--;
-        document.getElementById("timer").textContent = `Temps restant : ${timeLeft}s`;
-
-        if (timeLeft <= 0) {
-            endGame();
-        }
-    }, 1000);
-}
-
-// Fonction pour arrêter le jeu
-function endGame() {
-    clearInterval(timer);
-    document.getElementById("timer").textContent = "Temps écoulé !";
-}
+// Démarrer la partie avec le thème sélectionné
+startGameBtn.addEventListener("click", () => {
+    const theme = themeSelect.value;
+    afficherImagesJeu(theme);
+});

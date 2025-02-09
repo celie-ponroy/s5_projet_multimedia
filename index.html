@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boite à bruits</title>
+    <title>Learnary - Boite à bruits</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="icon" href="logo.png" type="image/png" />
 </head>
@@ -13,7 +13,7 @@
     <div id="welcome-screen">
         <h1>Bienvenue sur Learnary</h1>
         <p>Découvrez notre application !</p>
-        <!-- Boutons pour accéder aux différents modes-->
+        <!-- Boutons pour accéder aux différents modes -->
         <div class="button-container">
             <button id="apprentissage-btn" class="main-button">Mode apprentissage</button>
             <button id="jeu-btn" class="main-button">Mode jeu</button>
@@ -26,6 +26,16 @@
             <button id="back-btn" class="nav-button">Retour à l'accueil</button>
             <h1 id="app-title">Boite à bruits</h1>
         </header>
+
+        <!-- Sélecteur de thème -->
+        <div id="theme-selector">
+            <label for="theme-select">Choisissez un thème :</label>
+            <select id="theme-select">
+                <option value="animaux">Animaux</option>
+                <option value="instruments">Instruments</option>
+                <option value="vehicules">Véhicules</option>
+            </select>
+        </div>
 
         <!-- Section pour l’apprentissage -->
         <div id="apprentissage-section" style="display: none;">
