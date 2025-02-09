@@ -1,5 +1,12 @@
+import { speak } from "./text_speech.js";
+import { data } from "./data.js";
+
+let langue = "fr"; 
+let theme = "pays"; 
 let taille_images = 9; // (3x3)
-let tableau = [
+let reponse_vrais;
+
+/*let tableau = [
     ["tortue.jpg", "tortue"],
     ["chien.jpg", "chien"],
     ["coq.jpg", "coq"],
@@ -19,30 +26,34 @@ export function ajouterImages(container) {
         return;
     }
 
-    container.innerHTML = ''; // Vider le conteneur avant d'ajouter les images
+    container.innerHTML = ''; // Vide le conteneur 
 
     for (let i = 0; i < taille_images; i++) {
         let image = document.createElement("img");
-        image.src = "/images/" + tableau[i][0];
+        image.src = "/images/animaux/" + tableau[i][0];
         image.addEventListener("click", function () { speak(tableau[i][1]); });
         container.appendChild(image);
     }
+}*/
+
+export function ajouterImages(){
+    let div = document.getElementById("images_jeu");
+    let elements = data[theme][langue]; 
+
+    elements.forEach((element) => {
+        let image = document.createElement("img");
+        image.src = "images/" + element.image;
+        image.alt = element.nom;
+        image.addEventListener("click", () => speak(element.nom));
+        div.appendChild(image);
+        
+    });  
 }
 
 
-// Fonction pour activer la synthèse vocale
-export function speak(texte) {
-    var msg = new SpeechSynthesisUtterance();
-    msg.text = texte;
-
-    // Attribuer les paramètres de la synthèse vocale
-    msg.volume = 1;   // Volume de la voix
-    msg.rate = 0.3;    // Vitesse de la voix
-    msg.pitch = 0.5;   // Tonalité de la voix
-
-    // Choisir la voix (par défaut la première voix disponible)
-    msg.voice = speechSynthesis.getVoices()[0];
-
-    // Lancer la lecture de la voix
-    window.speechSynthesis.speak(msg);
+export function initiliser_page(){
+    //bouton en haut qui permets de choisir sa langue et son thème
+    ajouterImages();
+    //boutton en bas pour quitter
 }
+

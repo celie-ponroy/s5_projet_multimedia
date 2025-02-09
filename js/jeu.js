@@ -1,3 +1,6 @@
+import { speak } from "./text_speech.js";
+import { data } from "./data.js";
+
 let taille_images = 9; // (3x3)
 let timerDuration = 30; // Durée du jeu en secondes
 let timer; // Variable pour stocker l'intervalle
@@ -21,22 +24,10 @@ export function ajouterImages(container) {
 
     for (let i = 0; i < taille_images; i++) {
         let image = document.createElement("img");
-        image.src = "/images/" + tableau[i][0];
+        image.src = "/images/animaux/" + tableau[i][0];
         image.addEventListener("click", function () { speak(tableau[i][1]); });
         container.appendChild(image);
     }
-}
-
-
-// Fonction pour lancer la synthèse vocale
-export function speak(texte) {
-    let msg = new SpeechSynthesisUtterance();
-    msg.text = texte;
-    msg.volume = 1;
-    msg.rate = 0.3;
-    msg.pitch = 0.5;
-    msg.voice = speechSynthesis.getVoices()[0]; // Changer la voix si besoin
-    window.speechSynthesis.speak(msg);
 }
 
 // Fonction pour démarrer le jeu

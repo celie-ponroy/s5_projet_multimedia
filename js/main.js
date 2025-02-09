@@ -1,4 +1,3 @@
-// Importation des modules avec des noms différents
 import { ajouterImages } from "./apprentissage.js";
 import { ajouterImages as ajouterImageJeu } from "./jeu.js";
 import { startGame } from "./jeu.js";
@@ -12,20 +11,20 @@ const apprentissageBtn = document.getElementById('apprentissage-btn');
 const jeuBtn = document.getElementById('jeu-btn');
 const startGameBtn = document.getElementById('start-game-btn');
 
-// Sélection des sections et conteneurs d'images
+// Sélection des sections et conteneurs des images
 const apprentissageSection = document.getElementById("apprentissage-section");
 const jeuSection = document.getElementById("jeu-section");
 const imagesContainerApprentissage = document.getElementById("images_apprentissage");
 const imagesContainerJeu = document.getElementById("images_jeu");
 
-// Fonction pour montrer l'application avec le bon mode
+// Montre la bonne section en fonction du mode 
 function showApp(mode) {
-    console.log(`Mode sélectionné : ${mode}`);  // 🔥 Debug
+    console.log(`Mode sélectionné : ${mode}`); //debug
 
     welcomeScreen.style.display = 'none';
     appScreen.style.display = 'block';
 
-    // Nettoyer les conteneurs avant d'ajouter de nouvelles images
+    // On vide les conteneurs d'images
     imagesContainerApprentissage.innerHTML = '';
     imagesContainerJeu.innerHTML = '';
 
@@ -34,7 +33,7 @@ function showApp(mode) {
         apprentissageSection.style.display = "block";
         jeuSection.style.display = "none";
         
-        console.log("Ajout des images d'apprentissage...");  // 🔥 Debug
+        console.log("Ajout des images d'apprentissage..."); //debug
         ajouterImages(imagesContainerApprentissage);
     } else if (mode === "jeu") {
         appTitle.textContent = "Boite à bruits - Jeu";
@@ -42,14 +41,14 @@ function showApp(mode) {
         apprentissageSection.style.display = "none";
         
 
-        console.log("Ajout des images pour le jeu...");  // 🔥 Debug
+        console.log("Ajout des images pour le jeu..."); //debug
         ajouterImageJeu(imagesContainerJeu);
     }
 }
 
-// Fonction pour revenir à l'accueil
+// Montre la page d'accueil
 function showWelcome() {
-    console.log("Retour à l'accueil.");  // 🔥 Debug
+    console.log("Retour à l'accueil."); //debug
     appScreen.style.display = 'none';
     welcomeScreen.style.display = 'flex';
     apprentissageSection.style.display = "none";
