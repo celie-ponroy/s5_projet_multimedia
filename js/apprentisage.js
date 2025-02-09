@@ -4,14 +4,10 @@ import { data } from "./data.js";
 let langue = "fr"; 
 let theme = "pays"; 
 
-let taille_images = 9;//(3x3)
-
 export function initiliser_page(){
     //boutton en haut qui permets de choisir sa langue et son thème
     ajouterImages();
     //boutton en bas pour quitter
-    
-
 }
 export function ajouterImages(){
     let div = document.getElementById("images_jeu");
@@ -23,6 +19,7 @@ export function ajouterImages(){
         image.alt = element.nom;
         image.addEventListener("click", () => speak(element.nom));
         div.appendChild(image);
+        
     });  
 }
 
