@@ -48,16 +48,15 @@ function speakInput(text) {
     window.speechSynthesis.speak(msg);
 }
 
-export function speak(texte){
+export function speak(texte,language = "en-US"){
     var msg = new SpeechSynthesisUtterance();
         msg.text = texte;
-        // Set les attributs
-        msg.volume = parseFloat(1); //volume
-        msg.rate = parseFloat(0.6); //vitesse
-        msg.pitch = parseFloat(0.5); //hauteur
-        // Si une voix a été sélectionnée, faire les modifications nécessaires.
-        msg.voice = speechSynthesis.getVoices()[0];
         
+        // Si une voix a été sélectionnée, faire les modifications nécessaires.
+        msg.lang = language;
+
+        msg.voice = speechSynthesis.getVoices().filter(voice => voice.lang === language)[0];
+        console.log("voix: "+msg.voice.name);
         // Ajouter ce texte (parole) à la liste de synthèse.
         window.speechSynthesis.speak(msg);
 }
