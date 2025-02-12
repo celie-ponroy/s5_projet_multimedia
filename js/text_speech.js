@@ -1,63 +1,90 @@
-'use strict'
+'use strict';
+
 var supportMsg = document.getElementById('msg');
 var voiceSelect = document.getElementById('voice');
 var button = document.getElementById('speak');
 var speechMsgInput = document.getElementById('speech-msg');
- // Get the attribute controls.
- var volumeInput = document.getElementById('volume');
- var rateInput = document.getElementById('rate');
- var pitchInput = document.getElementById('pitch');
 
-export function init(){
+// Get the attribute controls.
+var volumeInput = document.getElementById('volume');
+var rateInput = document.getElementById('rate');
+var pitchInput = document.getElementById('pitch');
+
+let voices = [];
+let defaultVoice = null;
+
+// Fonction d'initialisation
+export function init() {
     if ('speechSynthesis' in window) {
-    supportMsg.innerHTML = 'Votre navigateur supporte la synthese de parole.';
+        supportMsg.innerHTML = 'Votre navigateur supporte la synthèse vocale.';
+        loadVoices();
+
+        // Écoute l'événement pour charger les voix dès qu'elles sont disponibles
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+
+        button.addEventListener("click", function() {
+            speakInput(speechMsgInput.value);
+        });
     } else {
-    supportMsg.innerHTML = 'Desole, votre navigateur ne supporte pas la synthesede la parole.';}
-    loadVoices();
-    button.addEventListener("click",function(){speakInput(speechMsgInput.value)});
+        supportMsg.innerHTML = 'Désolé, votre navigateur ne supporte pas la synthèse vocale.';
+    }
 }
 
-
-
+// Charger les voix disponibles et forcer une voix française
 function loadVoices() {
-    var voices = speechSynthesis.getVoices();
-    // parcourir la liste des voix.
-    voices.forEach(function(voice, i) {
-    var option = document.createElement('option');
-    option.value = voice.name;
-    option.innerHTML = voice.name;
-    // Add the option to the voice selector.
-    voiceSelect.appendChild(option);
+    voices = speechSynthesis.getVoices();
+
+    // Effacer les options précédentes
+    voiceSelect.innerHTML = '';
+
+    voices.forEach((voice) => {
+        var option = document.createElement('option');
+        option.value = voice.name;
+        option.innerHTML = `${voice.name} (${voice.lang})`;
+        voiceSelect.appendChild(option);
     });
+
+    // Sélectionner une voix française par défaut
+    defaultVoice = voices.find(voice => voice.lang === 'fr-FR') || voices.find(voice => voice.lang.startsWith('fr')) || voices[0];
+
+    if (defaultVoice) {
+        voiceSelect.value = defaultVoice.name;
     }
+}
 
-
+// Fonction pour parler avec le texte de l'input
 function speakInput(text) {
     var msg = new SpeechSynthesisUtterance();
     msg.text = text;
-    // Set les attributs
     msg.volume = parseFloat(volumeInput.value);
     msg.rate = parseFloat(rateInput.value);
     msg.pitch = parseFloat(pitchInput.value);
-    // Si une voix a été sélectionnée, faire les modifications nécessaires.
-    if (voiceSelect.value) {
-    msg.voice = speechSynthesis.getVoices().filter(function(voice)
-    { return voice.name == voiceSelect.value; })[0];
+
+    let selectedVoice = voices.find(voice => voice.name === voiceSelect.value);
+    if (selectedVoice) {
+        msg.voice = selectedVoice;
+    } else if (defaultVoice) {
+        msg.voice = defaultVoice;
     }
-    // Ajouter ce texte (parole) à la liste de synthèse.
+
     window.speechSynthesis.speak(msg);
 }
 
-export function speak(texte){
+// Fonction pour parler avec une voix naturelle en français
+export function speak(texte) {
     var msg = new SpeechSynthesisUtterance();
-        msg.text = texte;
-        // Set les attributs
-        msg.volume = parseFloat(1); //volume
-        msg.rate = parseFloat(0.6); //vitesse
-        msg.pitch = parseFloat(0.5); //hauteur
-        // Si une voix a été sélectionnée, faire les modifications nécessaires.
-        msg.voice = speechSynthesis.getVoices()[0];
-        
-        // Ajouter ce texte (parole) à la liste de synthèse.
-        window.speechSynthesis.speak(msg);
+    msg.text = texte;
+    msg.volume = 1;   // Volume normal
+    msg.rate = 0.7;     // Vitesse normale
+    msg.pitch = 0.7;    // Hauteur normale
+
+    // Forcer une voix française
+    let frenchVoice = voices.find(voice => voice.lang === 'fr-FR') || voices.find(voice => voice.lang.startsWith('fr')) || voices[0];
+    
+    if (frenchVoice) {
+        msg.voice = frenchVoice;
+    }
+
+    window.speechSynthesis.speak(msg);
+    
 }

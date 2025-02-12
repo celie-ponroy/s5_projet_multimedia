@@ -40,11 +40,11 @@ export function afficherImagesJeu(container, theme, lang) {
 }
 
 // Fonction pour vérifier si l'image cliquée est correcte
-function checkImage(imgElement, imageElement) {
+function checkImage(imgElement) {
     if (imgElement.alt === currentImage.nom) {
         // Si l'image correspond, on incrémente le score et on dit "correct"
         score++;
-        speak("Correct");
+        speak("Bonne réponse");
     } else {
         // Si l'image ne correspond pas, on dit "incorrect"
         speak("Incorrect");
@@ -101,7 +101,7 @@ startGameBtn.addEventListener("click", () => {
 
 // Démarre le timer pour le jeu
 let timerInterval; // Pour stocker l'intervalle
-
+let timer = 10; // Durée du timer en secondes
 // Fonction pour démarrer le timer
 export function startTimer() {
     // Réinitialisation du timer à chaque début de jeu
