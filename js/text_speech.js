@@ -70,21 +70,17 @@ function speakInput(text) {
     window.speechSynthesis.speak(msg);
 }
 
-// Fonction pour parler avec une voix naturelle en français
-export function speak(texte) {
+
+export function speak(texte,language = "en-US"){
     var msg = new SpeechSynthesisUtterance();
-    msg.text = texte;
-    msg.volume = 1;   // Volume normal
-    msg.rate = 0.7;     // Vitesse normale
-    msg.pitch = 0.7;    // Hauteur normale
+        msg.text = texte;
+        
+        // Si une voix a été sélectionnée, faire les modifications nécessaires.
+        msg.lang = language;
 
-    // Forcer une voix française
-    let frenchVoice = voices.find(voice => voice.lang === 'fr-FR') || voices.find(voice => voice.lang.startsWith('fr')) || voices[0];
-    
-    if (frenchVoice) {
-        msg.voice = frenchVoice;
-    }
+        msg.voice = speechSynthesis.getVoices().filter(voice => voice.lang === language)[0];
+        console.log("voix: "+msg.voice.name);
+        // Ajouter ce texte (parole) à la liste de synthèse.
+        window.speechSynthesis.speak(msg);
 
-    window.speechSynthesis.speak(msg);
-    
 }

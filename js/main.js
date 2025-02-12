@@ -88,6 +88,7 @@ function showWelcome() {
     welcomeScreen.style.display = 'flex';
     apprentissageSection.style.display = "none";
     jeuSection.style.display = "none";
+    //arreter le jeu encours 
 }
 
 // Écouteurs d'événements
