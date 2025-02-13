@@ -1,5 +1,5 @@
 import { ajouterImages } from "./apprentissage.js";
-import { afficherImagesJeu, startTimer } from "./jeu.js";
+import { afficherImagesJeu, endGame, startTimer } from "./jeu.js";
 
 // Sélection des éléments DOM
 const welcomeScreen = document.getElementById('welcome-screen');
@@ -20,6 +20,8 @@ const langSelect = document.getElementById("lang-select");//Sélecteur de langue
 
 let currentTheme = themeSelect.value; // Valeur du thème sélectionné (par défaut = premier choix)
 let currentLang = langSelect.value; //Valeur de la langue sélectionnée (par défaut = premier choix)
+let gameInProgress = false;  // Déclare la variable en haut de ton script si ce n'est pas déjà fait
+
 
 // Fonction pour charger les images par défaut
 function loadDefaultImages() {
@@ -88,8 +90,19 @@ function showWelcome() {
     welcomeScreen.style.display = 'flex';
     apprentissageSection.style.display = "none";
     jeuSection.style.display = "none";
-    //arreter le jeu encours 
+
+    // Si une partie est en cours, on arrête juste le timer sans déclencher l'alerte
+    if (gameInProgress) {
+        stopTimer();  // Arrêter le timer
+        gameInProgress = false; // Réinitialiser l'état du jeu
+        startGameBtn.disabled = false; // Réactiver le bouton de démarrage
+    }
+
+    // Réinitialiser le texte du timer à 0
+    document.getElementById("timer").textContent = "Temps écoulé : 0s";  
 }
+
+
 
 // Écouteurs d'événements
 apprentissageBtn.addEventListener('click', () => showApp("apprentissage"));

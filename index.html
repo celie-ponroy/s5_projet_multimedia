@@ -30,22 +30,23 @@
         </header>
 
         <!-- Sélecteur de thème -->
-        <div id="theme-selector">
-            <label for="theme-select">Choisissez un thème :</label>
-            <select id="theme-select">
+        <div class="selectors-container">
+            <div id="theme-selector">
+              <label for="theme-select">Choisissez un thème :</label>
+              <select id="theme-select">
                 <option value="animaux">Animaux</option>
                 <option value="drapeaux">Drapeaux</option>
-            </select>
-        </div>
-
-        <!-- Sélecteur de la langue -->
-        <div id="lang-selector">
-            <label for="lang-select">Choisissez une langue :</label>
-            <select id="lang-select">
+              </select>
+            </div>
+        <!-- Sélecteur de langue -->
+            <div id="lang-selector">
+              <label for="lang-select">Choisissez une langue :</label>
+              <select id="lang-select">
                 <option value="fr">Français</option>
                 <option value="en">Anglais</option>
-            </select>
-        </div>
+              </select>
+            </div>
+          </div>
 
         <!-- Section pour l’apprentissage -->
         <div id="apprentissage-section" style="display: none;">
@@ -54,9 +55,12 @@
 
         <!-- Section pour le jeu -->
         <div id="jeu-section" style="display: none;">
-            <p id="timer">Temps restant : <span id="timer-value">30s</span></p>
-            <div id="score-display">Score : 0</div>
-            <div id="high-score-display">High Score : 0</div>
+            <div id="game-info">
+                <p id="timer">Temps restant : 60s</p>
+                <p id="score-display">Score : 0</p>
+                <p id="high-score-display">High Score : 0</p>
+            </div>
+            
             <button id="start-game-btn" class="main-button">Commencer la partie</button>
             <div id="images_jeu"></div>
         </div>

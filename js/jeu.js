@@ -17,6 +17,8 @@ let timerInterval = null; // Stockage du timer
 let gameInProgress = false; // Vérifier si une partie est en cours
 let contenerImages = null;
 
+
+
 // Afficher le high score initial
 highScoreDisplay.textContent = `High Score : ${highScore}`;
 
@@ -78,7 +80,7 @@ function startNewRound() {
 // Fonction pour démarrer le timer
 export function startTimer() {
     clearInterval(timerInterval);
-    let timer = 60;
+    let timer = 10;
     const timerDisplay = document.getElementById("timer");
     
     timerDisplay.textContent = `Temps restant : ${timer}s`;
@@ -88,13 +90,13 @@ export function startTimer() {
         timerDisplay.textContent = `Temps restant : ${timer}s`;
 
         if (timer == 0) {
-            endGame();
+            endGame();  // Le jeu se termine ici avec l'alerte
         }
     }, 1000);
 }
 
 // Fonction de fin de jeu
-function endGame() {
+export function endGame() {
     clearInterval(timerInterval);
     gameInProgress = false;
     startGameBtn.disabled = false; // Réactiver le bouton
@@ -113,6 +115,30 @@ function endGame() {
     document.getElementById("timer").textContent = `Temps écoulé : 0s`;
     contenerImages.innerHTML = "";
 }
+
+
+
+// Démarrer la partie
+startGameBtn.addEventListener("click", () => {
+    if (gameInProgress) {
+        console.log("Une partie est déjà en cours !");
+        return;
+    }
+
+    gameInProgress = true;
+    score = 0;
+    updateScore();
+    startGameBtn.disabled = true;
+
+    afficherImagesJeu(imagesJeuContainer, themeSelect.value, langSelect.value);
+
+    setTimeout(() => {
+        if (!gameInProgress) return; // Vérifier si le jeu est toujours en cours après 3s
+        startNewRound();  // Choisir une image après le délai
+        startTimer();  // Démarrer le timer après le délai
+    }, 3000);
+});
+
 
 // Démarrer la partie
 startGameBtn.addEventListener("click", () => {
